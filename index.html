@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#FAF9F7">
+  <meta name="description" content="Lift & web ホームページ制作サービスのお申し込みページです。">
+  <title>お申し込み｜Lift &amp; web</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="page-shell">
+    <header class="brand-header fade-in">
+      <a class="brand brand-logo" href="#top" aria-label="Lift & web トップへ">
+        <img src="assets/lift-web-logo.jpg" alt="Lift & web">
+      </a>
+    </header>
+
+    <section class="intro fade-in" id="top" aria-labelledby="page-title">
+      <p class="eyebrow">APPLICATION</p>
+      <h1 id="page-title">お申し込み</h1>
+      <p class="intro-copy">ホームページ制作について、現在のご状況やご希望をお聞かせください。<br>内容を確認後、メールにてご連絡いたします。</p>
+    </section>
+
+    <section class="form-card fade-in" aria-labelledby="form-heading">
+      <div class="form-heading">
+        <p class="section-number">01</p>
+        <div>
+          <h2 id="form-heading">お客さま情報</h2>
+          <p><span class="required-mark" aria-hidden="true">*</span> は必須項目です</p>
+        </div>
+      </div>
+
+      <form id="applicationForm" novalidate>
+        <div class="field">
+          <label for="company">会社名</label>
+          <input id="company" name="company" type="text" autocomplete="organization" placeholder="株式会社〇〇">
+        </div>
+
+        <div class="field">
+          <label for="name">担当者名 <span class="required-mark">*</span></label>
+          <input id="name" name="name" type="text" autocomplete="name" placeholder="山田 花子" required>
+          <p class="error-message" id="nameError">担当者名を入力してください</p>
+        </div>
+
+        <div class="field">
+          <label for="email">メールアドレス <span class="required-mark">*</span></label>
+          <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="hello@example.com" required>
+          <p class="error-message" id="emailError">正しいメールアドレスを入力してください</p>
+        </div>
+
+        <div class="field">
+          <label for="instagram">Instagram URL</label>
+          <input id="instagram" name="instagram" type="url" inputmode="url" autocomplete="url" placeholder="https://www.instagram.com/">
+        </div>
+
+        <div class="field">
+          <label for="message">ご用件 <span class="required-mark">*</span></label>
+          <textarea id="message" name="message" rows="6" placeholder="制作をご検討中のサイトや、ご相談内容をお聞かせください" required></textarea>
+          <p class="error-message" id="messageError">ご用件を入力してください</p>
+        </div>
+
+        <div class="honeypot" aria-hidden="true">
+          <label for="website">ウェブサイト</label>
+          <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="form-footer">
+          <p>送信後、通常2営業日以内にメールでご連絡いたします。</p>
+          <button type="submit">申し込み内容を送信</button>
+          <small>お預かりした情報は、ご連絡およびご提案の目的にのみ使用します。</small>
+        </div>
+      </form>
+
+      <div class="success-panel" id="successPanel" role="status" aria-live="polite" tabindex="-1" hidden>
+        <p class="success-label">THANK YOU</p>
+        <h2>お申し込みを受け付けました</h2>
+        <p>ご入力いただいたメールアドレスへ受付メールをお送りしました。<br>内容を確認のうえ、通常2営業日以内にご連絡いたします。</p>
+      </div>
+    </section>
+
+    <footer class="site-footer fade-in">
+      <p>Lift &amp; web</p>
+      <small>© 2026 Lift &amp; web</small>
+    </footer>
+  </main>
+
+  <div class="toast" role="alert" aria-live="assertive" aria-atomic="true"></div>
+  <script src="script.js"></script>
+</body>
+</html>

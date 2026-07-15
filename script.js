@@ -7,7 +7,6 @@ const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxNs_z6SBzqMALmE6Ve3qn
 const requiredFields = [
   { field: document.querySelector('#name'), error: document.querySelector('#nameError') },
   { field: document.querySelector('#email'), error: document.querySelector('#emailError') },
-  { field: document.querySelector('#meetingZoom'), error: document.querySelector('#meetingMethodError') },
   { field: document.querySelector('#message'), error: document.querySelector('#messageError') },
 ];
 
@@ -23,12 +22,6 @@ requiredFields.forEach(({ field, error }) => {
   field.addEventListener('blur', () => updateFieldState(field, error));
   field.addEventListener('input', () => {
     if (field.getAttribute('aria-invalid') === 'true') updateFieldState(field, error);
-  });
-});
-
-document.querySelectorAll('input[name="meetingMethod"]').forEach((field) => {
-  field.addEventListener('change', () => {
-    updateFieldState(document.querySelector('#meetingZoom'), document.querySelector('#meetingMethodError'));
   });
 });
 

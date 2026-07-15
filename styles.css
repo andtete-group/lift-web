@@ -170,6 +170,66 @@ h1 {
   margin-bottom: 10px;
 }
 
+.choice-field {
+  border: 0;
+  margin-inline: 0;
+  padding: 0;
+}
+
+.choice-field legend {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  margin-bottom: 12px;
+  padding: 0;
+}
+
+.choice-grid {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.choice-option {
+  margin: 0 !important;
+  position: relative;
+}
+
+.choice-option input {
+  height: 1px;
+  opacity: 0;
+  position: absolute;
+  width: 1px;
+}
+
+.choice-option span {
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  cursor: pointer;
+  display: flex;
+  font-size: 13px;
+  height: 54px;
+  justify-content: center;
+  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.choice-option input:checked + span {
+  background: #f5f1ec;
+  border-color: var(--accent);
+}
+
+.choice-option input:focus-visible + span {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(216, 205, 193, 0.2);
+}
+
+.choice-option input[aria-invalid="true"] + span {
+  border-color: var(--error);
+}
+
 .required-mark {
   color: var(--accent);
   margin-left: 3px;

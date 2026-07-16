@@ -8,7 +8,10 @@ const requiredFields = [
   { field: document.querySelector('#name'), error: document.querySelector('#nameError') },
   { field: document.querySelector('#email'), error: document.querySelector('#emailError') },
   { field: document.querySelector('#message'), error: document.querySelector('#messageError') },
+  { field: document.querySelector('#consultationTitle'), error: document.querySelector('#consultationTitleError') },
+  { field: document.querySelector('#pageCount'), error: document.querySelector('#pageCountError') },
 ];
+const requiredGroups = [...document.querySelectorAll('[data-required-group]')];
 
 function updateFieldState(field, error) {
   const valid = field.validity.valid;
@@ -25,6 +28,33 @@ requiredFields.forEach(({ field, error }) => {
   });
 });
 
+function updateGroupState(group) {
+  const checked = group.querySelectorAll('input[type="checkbox"]:checked').length > 0;
+  const error = group.querySelector('.error-message');
+  group.setAttribute('aria-invalid', String(!checked));
+  if (error) error.classList.toggle('visible', !checked);
+  return checked;
+}
+
+requiredGroups.forEach((group) => {
+  group.addEventListener('change', () => updateGroupState(group));
+});
+
+function buildPayload(formData) {
+  const payload = {};
+
+  formData.forEach((value, key) => {
+    if (payload[key]) {
+      payload[key] = `${payload[key]}, ${value}`;
+      return;
+    }
+
+    payload[key] = value;
+  });
+
+  return payload;
+}
+
 function showToast(message) {
   toast.textContent = message;
   toast.classList.add('visible');
@@ -34,14 +64,16 @@ function showToast(message) {
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
   const allValid = requiredFields.map(({ field, error }) => updateFieldState(field, error)).every(Boolean);
+  const allGroupsValid = requiredGroups.map((group) => updateGroupState(group)).every(Boolean);
 
-  if (!allValid) {
+  if (!allValid || !allGroupsValid) {
     requiredFields.find(({ field }) => !field.validity.valid)?.field.focus();
+    if (allValid) requiredGroups.find((group) => group.getAttribute('aria-invalid') === 'true')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     return;
   }
 
   const formData = new FormData(form);
-  const payload = Object.fromEntries(formData.entries());
+  const payload = buildPayload(formData);
 
   submitButton.disabled = true;
   submitButton.textContent = '送信しています…';

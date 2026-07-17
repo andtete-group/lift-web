@@ -36,7 +36,6 @@
 
       <form id="applicationForm" novalidate>
         <input type="hidden" name="planType" value="通常価格ページ">
-        <input type="hidden" name="estimatedPrice" id="estimatedPriceInput" value="250,000円">
 
         <div class="field">
           <label for="company">会社名</label>
@@ -79,21 +78,6 @@
               <p>制作に入るために必要な内容を、分かる範囲でお聞かせください。</p>
             </div>
           </div>
-
-          <aside class="estimate-card" id="estimateCard" aria-live="polite">
-            <div class="estimate-card__head">
-              <div>
-                <p class="estimate-label">概算見積もり</p>
-                <p class="estimate-price"><span id="estimatePrice">250,000</span><span id="estimateSuffix">円〜</span></p>
-              </div>
-              <span class="estimate-cap">上限500,000円</span>
-            </div>
-            <p class="estimate-note">通常価格は250,000円から。選択内容に応じて概算金額が変わりますが、最大料金は500,000円です。</p>
-            <ul class="estimate-breakdown" id="estimateBreakdown">
-              <li>基本制作プラン：250,000円</li>
-            </ul>
-            <p class="estimate-disclaimer">こちらは概算見積もりです。細かいヒアリング後に、正式な金額を記載した請求書を発行いたします。</p>
-          </aside>
 
           <div class="field">
             <label for="consultationTitle">相談タイトル <span class="required-mark">*</span></label>

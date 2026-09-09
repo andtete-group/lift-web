@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /apply.html
+
+Sitemap: https://andtete-group.github.io/lift-web/sitemap.xml

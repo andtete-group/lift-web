@@ -4,6 +4,17 @@ const submitButton = form.querySelector('button[type="submit"]');
 const successPanel = document.querySelector('#successPanel');
 const ENDPOINT = 'https://script.google.com/macros/s/AKfycbxNs_z6SBzqMALmE6Ve3qnP-D4VelCrxbj4QaOT5I08ESX72jYFelQKDNNdYC2H674L5Q/exec';
 
+const planNames = {
+  monthly: 'まるごと運用プラン（月額22,000円）',
+  buyout: '買い切り制作プラン（220,000円〜）',
+};
+const selectedPlanKey = new URLSearchParams(window.location.search).get('plan');
+if (planNames[selectedPlanKey]) {
+  document.querySelector('#planType').value = planNames[selectedPlanKey];
+  document.querySelector('#selectedPlanName').textContent = planNames[selectedPlanKey];
+  document.querySelector('#selectedPlan').hidden = false;
+}
+
 const requiredFields = [
   { field: document.querySelector('#name'), error: document.querySelector('#nameError') },
   { field: document.querySelector('#email'), error: document.querySelector('#emailError') },

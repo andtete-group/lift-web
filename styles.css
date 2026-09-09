@@ -162,6 +162,22 @@ h1 {
   margin-bottom: 30px;
 }
 
+.selected-plan {
+  align-items: center;
+  background: #f5f1eb;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  margin: 0 0 34px;
+  padding: 18px 20px;
+}
+
+.selected-plan[hidden] { display: none; }
+.selected-plan small { color: var(--muted); font-family: "Cormorant Garamond", serif; font-size: 9px; letter-spacing: .18em; }
+.selected-plan strong { font-family: "Noto Serif JP", serif; font-size: 16px; font-weight: 500; grid-column: 1; }
+.selected-plan a { color: var(--muted); font-size: 10px; grid-column: 2; grid-row: 1 / span 2; text-decoration: underline; text-underline-offset: 3px; }
+
 .field label,
 .choice-field legend {
   display: block;

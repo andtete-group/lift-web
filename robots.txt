@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /apply.html
 
-Sitemap: https://andtete-group.github.io/lift-web/sitemap.xml
+Sitemap: https://lift-web-bz4.pages.dev/sitemap.xml

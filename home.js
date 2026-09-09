@@ -9,6 +9,30 @@ const observer = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('.reveal').forEach((element) => observer.observe(element));
 
+// Header navigation: keep every menu item usable even when visual effects are active.
+const siteHeader = document.querySelector('.site-header');
+const menuButton = document.querySelector('.menu-button');
+const headerNav = siteHeader?.querySelector('nav');
+
+menuButton?.addEventListener('click', () => {
+  const isOpen = siteHeader.classList.toggle('menu-open');
+  menuButton.setAttribute('aria-expanded', String(isOpen));
+  menuButton.setAttribute('aria-label', isOpen ? 'メニューを閉じる' : 'メニューを開く');
+});
+
+headerNav?.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener('click', (event) => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (!target) return;
+    event.preventDefault();
+    target.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+    history.replaceState(null, '', link.getAttribute('href'));
+    siteHeader.classList.remove('menu-open');
+    menuButton?.setAttribute('aria-expanded', 'false');
+    menuButton?.setAttribute('aria-label', 'メニューを開く');
+  });
+});
+
 document.querySelectorAll('details').forEach((detail) => {
   detail.addEventListener('toggle', () => {
     if (!detail.open) return;
